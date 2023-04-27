@@ -10,6 +10,7 @@ final authApiProvider =Provider((ref) {
   final account =ref.watch(appWriteAccountProvider);
   return AUTHAPI(account:account);
 });
+
 abstract class IAUTHAPI{
   FutureEither<model.Account> signUp({
 required String email,
@@ -38,6 +39,8 @@ return null;
     throw UnimplementedError();
 
   }
+
+  @override
   FutureEither<model.Account> signUp({
     required String email,
     required String password
@@ -57,6 +60,8 @@ return left(Failure(e.message??"Some unexpected Errorr occured",stackTrace));
     // TODO: implement signUp
     throw UnimplementedError();
   }
+
+  @override
   FutureEither<model.Session> login({
     required String email,
     required String password

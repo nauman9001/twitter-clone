@@ -15,15 +15,17 @@ class MyApp extends ConsumerWidget {
   const MyApp({super.key});
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context,WidgetRef reff) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      home:ref.watch(currentUserProvider).when(
+      home:reff.watch(currentUserAccountProvider).when(
           data: (user){
             if(user!=null){
+              print(user.email);
               return const HomeView();
-            }return const SignUp();
+            }
+            return const SignUp();
           },
           error:(e,stackTrace)=>ErrorPage(error: e.toString()),
           loading: ()=>const  LoadingPage()
